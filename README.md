@@ -1,4 +1,4 @@
-MULTIPE-KONESI-CI
+Codeigniter jQuery
 =================
 
 <font align="justify">Sedikit berbagi ya walaupun sudah banyak juga yang sudah ngeshare tapi disini saya sajikan dengan 
