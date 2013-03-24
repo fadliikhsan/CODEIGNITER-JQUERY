@@ -8,13 +8,13 @@ class Cmahasiswa extends CI_Controller{
     function index(){
         $data['judul'] = 'Data Mahasiswa';
         $data['mahasiswa'] = $this->modelmahasiswa->getDataMahasiswa();
-        $this->load->view('v_mahasiswa',$data);
+        $this->load->view('v_mahasiswa',$data); /*untuk me-Load view Index dari web*/
     }
     
     function add_mahasiswa(){
-        if($_POST == NULL) {
+        if($_POST == NULL) { 	/*Mengecek Untuk Nilai POST kosong atau tidak*/
             $data['judul'] = 'Input Data Mahasiswa';
-            $this->load->view('inputmahasiswa');
+            $this->load->view('inputmahasiswa'); /*Jika kosong maka membuka file inputmahasiswa.php*/
         }
         else {
             $nim 		= $this->input->post('nim');
@@ -29,7 +29,7 @@ class Cmahasiswa extends CI_Controller{
                 'angkatan'  => $angkatan
             );
             
-            $this->modelmahasiswa->insertDataMahasiswa($data);            
+            $this->modelmahasiswa->insertDataMahasiswa($data);    /*Insert data mahasiswa ke modelmahasiswa*/         
             $out['mahasiswa'] = $this->modelmahasiswa->getDataMahasiswa();
 			//$this->load->view("data",$out);            
         

@@ -3,29 +3,30 @@
     <title><?php echo $judul ?></title>
     <link href="<?php echo base_url();?>asset/css/style.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery.js"></script>
-	<script>
-        $().ready(function(){                        
-            $("#tombolTambah").click(function(){				
-                $.ajax({
-                    url : "<?php echo base_url(); ?>cmahasiswa/add_mahasiswa",
-                    beforeSend: function(){
-                                        $("#loading").html('<img src="<?php echo base_url(); ?>asset/img/loading51.gif">');										
-                                    },
-                    success:    function(html){
-                                    $("#data").html(html);
-                                    $("#btnSimpan").show();
-                                    $("#btnKembali").show();
-                                    $("#tombolTambah").hide();
-                                }                
-                });            
-            });        
+		<script>
+			$().ready(function(){                        
+				$("#tombolTambah").click(function(){	/*Ketika tombol tambah di klik*/
+					$.ajax({
+						url : "<?php echo base_url(); ?>cmahasiswa/add_mahasiswa", /*Mengarahkan ke fungsi add_mahasiswa yang berada pada controller cmahasiswa*/
+						beforeSend: function(){
+											$("#loading").html('<img src="<?php echo base_url(); ?>asset/img/loading51.gif">');										
+										},
+						success:    function(html){
+										$("#data").html(html);
+										$("#btnSimpan").show();
+										$("#btnKembali").show();
+										$("#tombolTambah").hide();
+									}                
+					});            
+				});        
             
-				$("#btnSimpan").click(function(){                
-					var nim = $("#nim").val();
-					var nama = $("#nama").val();
-					var jurusan = $("#jurusan").val();
-					var angkatan = $("#angkatan").val();
-				
+				$("#btnSimpan").click(function(){     /*Ketika tombol Simpan di klik*/            
+					var nim 		= $("#nim").val();
+					var nama 		= $("#nama").val();
+					var jurusan 	= $("#jurusan").val();
+					var angkatan 	= $("#angkatan").val();
+					
+					/*Pengecekan form. tidak boleh kosong*/
 					if($("#nim").val() == "" || $("#nama").val() == "" || $("#jurusan").val() == "" || $("#angkatan").val() == "")
 						$.ajax({
 							success: function(html){
@@ -36,7 +37,7 @@
 						});
 					else
 						$.ajax({
-							url : "<?php echo base_url() ?>cmahasiswa/add_mahasiswa",
+							url : "<?php echo base_url() ?>cmahasiswa/add_mahasiswa", /*POST data yang dikirim ke fungsi add_mahasiswa*/
 							type: "POST",
 							beforeSend: function(){
 												$("#loading").fadeIn(3000).html('<img src="<?php echo base_url(); ?>asset/img/loading51.gif">');
@@ -55,7 +56,7 @@
 				});
             
 			
-				$("#btnKembali").click(function(){                                
+				$("#btnKembali").click(function(){  /*Ketika tombol kembali di klik*/                              
 					$.ajax({
 						url : "<?php echo base_url() ?>cmahasiswa",
 						beforeSend: function(){
